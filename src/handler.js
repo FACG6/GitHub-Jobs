@@ -46,6 +46,17 @@ const handleSearch = (req, res) => {
 }
 
 const handleNotFoundPage = (req, res) => {
+    const notFoundPath = path.join(__dirname, '..', 'public', 'html', 'pageNotFound.html')
+fs.readFile(notFoundPath, (err, notFoundFile) => {
+    if (err) {
+        handleServerError(req, res);
+        return;
+    }
+    res.writeHead(404, {
+        'content-type': 'text/html'
+    })
+    res.end(notFoundFile);
+})
 
 }
 
