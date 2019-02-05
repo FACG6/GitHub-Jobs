@@ -2,7 +2,8 @@ const {
 	handleHome,
 	handleStatics,
 	handleSearch,
-	handleNotFoundPage
+    handleNotFoundPage,
+    handleServerError
 } = require('./handler')
 
 const router = (req, res) => {
