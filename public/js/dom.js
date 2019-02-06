@@ -61,24 +61,20 @@ searchBtn.addEventListener('click', () => {
 })
 
 const renderEmpty = (message) => {
-	resultsTitle.textContent = " ";
 	jobList.innerHTML = ' ';
 	const {
 		emptyMessage
 	} = createNodes(['emptyMessage'], ['p'], ['emptyMessage']);
 	emptyMessage.textContent = message;
-	jobList.appendChild(emptyMessage);
+	githubForm.appendChild(emptyMessage);
 }
 
 const renderNoResults = (message) => {
-	resultsTitle.textContent= " ";
 	jobList.innerHTML = ' ';
-	jobList.textContent = message;
+	resultsTitle.textContent = message;
 }
 
 const renderResults = (resJson) => {
-		resultsTitle.textContent = " ";
-		jobList.innerHTML = ' ';
 	resJson.forEach((job, index) => {
 		renderJobContent(job, index)
 	});
@@ -96,15 +92,13 @@ const renderError = (err) => {
 const renderJobContent = (job, index) => {
 
 	const DOMElement = createNodes(['jobTitle', 'companyName', 'timeType', 'state', 'date'], 
-		['a', 'p', 'p', 'p', 'p'], 
+		['p', 'p', 'p', 'p', 'p'], 
 		['jobTitle', 'companyName', 'timeType', 'state', 'date']);
 	const {
 		jobData
 	} = createNodes(['jobData'], ['li'], ['jobData']);
 
-	console.log(job);
 	DOMElement.jobTitle.textContent = job.title;
-	DOMElement.jobTitle.href = job.url;
 	DOMElement.companyName.textContent = job.company;
 	DOMElement.timeType.textContent = job.type;
 	DOMElement.state.textContent = job.location;
@@ -113,7 +107,7 @@ const renderJobContent = (job, index) => {
 	jobData.appendChild(DOMElement.companyName)
 	jobData.appendChild(DOMElement.timeType)
 	jobData.appendChild(DOMElement.state)
-	jobData.appendChild(DOMElement.date)
+	jobData.appendChild(DOMElement.jobTitle)
 	jobList.appendChild(jobData)
 }
 
