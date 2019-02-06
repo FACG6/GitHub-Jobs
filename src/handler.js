@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const request = require('request');
+const {makeRequest } = require('./makeRequest');
 
 const handleHome = (req, res) => {
     const endpoint = req.url;
@@ -48,19 +48,19 @@ const handleSearch = (req, res) => {
         data += chunck;
     })
     req.on('end', () => {
-        const description = data.split[','][0];
-        const location = data.split[','][1];
-        const option = {
-            url: `https://jobs.github.com/positions.json?description=${description}&location=${location}`,
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Accept-Charset': 'utf-8',
-            } //Not sure if the headers is important__Will make more research
-        }
-        request(option, (err, res, body) => {
-            //Still not done //
-        })
+        makeRequest(data, (err, json) => {
+            if (err) {
+                res.writeHead(500, {
+                    'content-type': 'text/plain'
+                });
+                res.end(err);
+            } else {
+                res.writeHead(200, {
+                    'content-type': 'application/json'
+                })
+                res.end(json);
+            }
+        });
     })
 }
 
