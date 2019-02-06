@@ -6,9 +6,11 @@ const fetch = (method, url, data, cb) => {
         cb(`xhr status${xhr.status}`);
         return;
       }
+      console.log('hi')
+      const obj = JSON.parse(xhr.responseText);
+      cb(null, obj);
     } 
-    const obj = JSON.parse(xhr.responseText);
-    cb(null, obj);
+    
   }
 
   xhr.open(method, url);

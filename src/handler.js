@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const {makeRequest } = require('./makeRequest');
+const makeRequest = require('./makeRequest');
 
 const handleHome = (req, res) => {
     const endpoint = req.url;
