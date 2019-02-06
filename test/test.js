@@ -8,6 +8,51 @@ test('Testing The tape', (t) => {
 	t.end();
 })
 
+test('Hnadle Home Page', (t)=>{
+	supertest(router)
+	.get('/')
+	.expect(200)
+	.expect('content-type', /html/)
+	.end((err, res)=>{
+		if(err){
+			t.error(err);
+			return;
+		}
+		t.equal(res.statusCode, 200, 'Should be 200 | Okay');
+		t.end();
+	})
+})
+
+test('Testing handleStatics: style.css', (t)=>{
+	supertest(router)
+		.get('/public/css/style.css')
+		.expect(200)
+		.expect('content-type', 'text/css')
+		.end((err, res) => {
+			if (err) {
+				t.error(err);
+				return;
+			}
+			t.equal(res.statusCode, 200, 'Should be 200 | Okay');
+			t.end();
+		})
+})
+
+test('Testing handleStatics: dom.js', (t) => {
+	supertest(router)
+		.get('/public/js/dom.js')
+		.expect(200)
+		.expect('content-type', 'text/javascript')
+		.end((err, res) => {
+			if (err) {
+				t.error(err);
+				return;
+			}
+			t.equal(res.statusCode, 200, 'Should be 200 | Okay');
+			t.end();
+		})
+})
+
 test('Handle Not Found Page', (t) => {
 	supertest(router)
 	.get('/israa')
@@ -19,7 +64,7 @@ test('Handle Not Found Page', (t) => {
 			return;
 		}
 		t.equal(res.statusCode, 404, 'Should be 404 | Not Found');
-		t.end()
+		t.end();
 	} )
 })
 
@@ -36,6 +81,21 @@ test('Handle Search', (t) => {
 		t.equal(res.statusCode, 200, 'Should be 200');
 		t.end()
 	} )
+})
+
+test('Handle Internal Server Error', (t) => {
+	supertest(router)
+		.get('/public/style.css')
+		.expect(500)
+		.expect('content-type', /html/)
+		.end((err, res) => {
+			if (err) {
+				t.error(err);
+				return;
+			}
+			t.equal(res.statusCode, 500, 'Should be 500 | internal Server Error');
+			t.end()
+		})
 })
 
 
