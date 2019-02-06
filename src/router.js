@@ -8,11 +8,12 @@ const {
 
 const router = (req, res) => {
 	const endPoint = req.url;
+	const regex = /\/public\/.*\/?(.css|.js|.html|.png|.jpg|.icon|.json)/;
 
 	if (endPoint === '/') {
 		handleHome(req, res);
 
-	} else if (endPoint.includes('/public')) {
+	} else if (regex.test(endPoint)) {
 		handleStatics(req, res);
 
 	} else if (endPoint === '/get-jobs') {
