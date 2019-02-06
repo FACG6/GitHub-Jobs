@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,18 +8,29 @@
     <link rel="stylesheet" href="../public/css/style.css">
     <title>GitHub Jobs</title>
 </head>
-<body>
-    <h1>GitHub Jobs</h1>
-    <form>
-        <label>Job Description</label>
-        <input type="text" value="" id="jobDescription">
-        <label>Location</label>
-        <input type="text" value="" id="jobLocation">
-        <button type="button" id="searchBtn">Search</button>
-    </form>
 
+<body>
+    <header>
+        <h1>GitHub Jobs</h1>
+    </header>
+    <form class="githubForm"> 
+        <div class='column'>
+            <label class='githubForm__label'>Job Description</label>
+            <input type="text" value="" id="jobDescription" class='githubForm__input'>
+        </div>
+        <div class='column'>
+            <label class='githubForm__label'>Location</label>
+            <input type="text" value="" id="jobLocation" class='githubForm__input'>
+        </div>
+        <button type="button" id="searchBtn" class='githubForm__button'>Search</button>
+    </form>
+    <div class='resultsContainer'>
+        <h2 class="resultsTitle"></h2>
+        <ul class='jobList'></ul>
+    </div>
     <script type="text/javascript" src="../public/js/fetch.js"></script>
     <script type="text/javascript" src="../public/js/dom.js"></script>
-    
+
 </body>
+
 </html>
