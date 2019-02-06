@@ -10,24 +10,26 @@
 </head>
 
 <body>
-    <header>
-        <h1>GitHub Jobs</h1>
-    </header>
-    <form class="githubForm"> 
-        <div class='column'>
-            <label class='githubForm__label'>Job Description</label>
-            <input type="text" value="" id="jobDescription" class='githubForm__input'>
+    <section id="container">
+        <header>
+            <h1>GitHub Jobs</h1>
+        </header>
+        <form class="githubForm"> 
+            <div class='column'>
+                <label class='githubForm__label'>Job Description</label>
+                <input type="text" value="" id="jobDescription" class='githubForm__input'>
+            </div>
+            <div class='column'>
+                <label class='githubForm__label'>Location</label>
+                <input type="text" value="" id="jobLocation" class='githubForm__input'>
+            </div>
+            <button type="button" id="searchBtn" class='githubForm__button'>Search</button>
+        </form>
+        <div class='resultsContainer'>
+            <h2 class="resultsTitle"></h2>
+            <ul class='jobList'></ul>
         </div>
-        <div class='column'>
-            <label class='githubForm__label'>Location</label>
-            <input type="text" value="" id="jobLocation" class='githubForm__input'>
-        </div>
-        <button type="button" id="searchBtn" class='githubForm__button'>Search</button>
-    </form>
-    <div class='resultsContainer'>
-        <h2 class="resultsTitle"></h2>
-        <ul class='jobList'></ul>
-    </div>
+    </section>
     <script type="text/javascript" src="../public/js/fetch.js"></script>
     <script type="text/javascript" src="../public/js/dom.js"></script>
 
