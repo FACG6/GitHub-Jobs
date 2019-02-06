@@ -1,5 +1,5 @@
 const fetch = (method, url, data, cb) => {
-  var xhr = new XMLHttpRequest();
+  const xhr = new XMLHttpRequest();
   xhr.onreadystatechange = () => {
     if (xhr.readyState === 4) {
       if (xhr.status !== 200) {
