@@ -8,7 +8,7 @@ const makeRequest = (data, callback) => {
     }
     request(option, (err, res) => {
         if (res.statusCode !== 200) {
-            callback(`statusCode is ${res.statusCode}`);
+            callback(`${res.statusCode}`);
             return;
         }
         if (!res.headers['content-type'].includes('application/json')) {

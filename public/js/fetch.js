@@ -3,14 +3,12 @@ const fetch = (method, url, data, cb) => {
   xhr.onreadystatechange = () => {
     if (xhr.readyState === 4) {
       if (xhr.status !== 200) {
-        cb(`xhr status${xhr.status}`);
+        cb(`${xhr.status} ${xhr.response}`);
         return;
       }
-      console.log('hi')
       const obj = JSON.parse(xhr.responseText);
       cb(null, obj);
     } 
-    
   }
 
   xhr.open(method, url);
