@@ -1,5 +1,82 @@
-h1{
-    color: red;
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto';
+}
+
+header {
+    background-color: #2d3436;
+    height: 4em;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+header h1 {
+    color: white;
+}
+
+.headerContainer {
+    width: 80%;
+    margin: 0 auto;
+}
 
 
+.githubForm {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 1em;
+}
+
+.githubForm__label {
+    font-size: 14px;
+}
+
+.githubForm__input {
+    padding: .5em;
+    width: 90%;
+    margin-top: 0.8em;
+    border-radius: 3px;
+    outline: none;
+    border: 1px solid grey;
+    background: #eee;
+}
+
+.githubForm__button {
+    padding: .5rem 1rem;
+    border: none;
+    background: #2d3436;
+    color: white;
+    font-family: roboto;
+    border-radius: 3px;
+    align-self: flex-end;
+}
+
+.resultsContainer {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em;
+}
+
+.resultsContainer h2 {
+    width: 37%;
+}
+
+.resultsContainer ul {
+    width: 37%;
+    list-style: none;
+    margin-top: 1em
+}
+
+.jobTitle {
+    text-decoration: none;
+}
+
+li {
+    margin: 1em;
+    padding: 0.5em
 }
