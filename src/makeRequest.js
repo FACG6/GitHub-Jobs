@@ -7,12 +7,16 @@ const makeRequest = (data, callback) => {
         method: 'GET',
     }
     request(option, (err, res) => {
-        if (res.statusCode !== 200) {
-            callback(`${res.statusCode}`);
+        if(err){
+            callback(err);
             return;
         }
-        if (!res.headers['content-type'].includes('application/json')) {
-            callback(`Not jason response. Content type is ${res.headers['content-type']}`);
+        if(res.statusCode !== 200){
+            callback(res.statusCode);
+            return;
+        }
+        if(!res.headers["content-type"].includes('application/json')){
+            callback(`content type is not json`);
             return;
         }
         callback(null, res.body);

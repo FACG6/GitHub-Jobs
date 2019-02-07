@@ -1,50 +1,72 @@
-* {
+ * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: 'Roboto';
 }
 
-header {
-    background-color: #2d3436;
-    height: 4em;
-    display: flex;
-    align-items: center;
-    margin-bottom: 1em;
+body{
+    background: #eee;
+    font-family: 'Roboto';
+
 }
 
-header h1 {
+header{
+    background: #2d3436;
     color: white;
 }
 
-.headerContainer {
+.headerContainer{
     width: 80%;
     margin: 0 auto;
 }
 
-
-.githubForm {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    padding: 1em;
+.headerContainer h1{
+    padding: 1em 2em;
 }
 
-.githubForm__label {
+.formContainer{
+    margin-top: 2em;
+}
+
+.githubForm{
+    display: flex;
+    width: 50%;
+    margin: 1em auto;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.resultsContainer{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.jobList{
+    list-style: none;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.githubForm__input{
+    border-radius: 3px;
+    padding: .5em;
+    border: 1px solid grey;
+    outline: none;
+    margin: .5em .5em .5em 0;
+}
+
+.githubForm__label{
     font-size: 14px;
 }
 
-.githubForm__input {
-    padding: .5em;
-    width: 90%;
-    margin-top: 0.8em;
-    border-radius: 3px;
-    outline: none;
-    border: 1px solid grey;
-    background: #eee;
-}
-
-.githubForm__button {
+.githubForm__button{
     padding: .5rem 1rem;
     border: none;
     background: #2d3436;
@@ -52,31 +74,97 @@ header h1 {
     font-family: roboto;
     border-radius: 3px;
     align-self: flex-end;
+    margin: .5em;
+    outline: none;
 }
 
-.resultsContainer {
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1em;
+.githubForm__button:hover{
+    background:#424242;
+    cursor:pointer;
 }
 
-.resultsContainer h2 {
-    width: 37%;
+.githubForm__input:hover{
+    cursor: text;
 }
 
-.resultsContainer ul {
-    width: 37%;
-    list-style: none;
-    margin-top: 1em
+.resultsTitle{
+    font-family: roboto;
+    font-size: 1.5em;
+    padding: 1em 0;
 }
 
-.jobTitle {
+.jobTitle{
     text-decoration: none;
+    font-size: .9em;
+    color: #222f3e;
+    margin-bottom: .5em;
 }
 
-li {
-    margin: 1em;
-    padding: 0.5em
+.timeType{
+    color: green;
+}
+
+.jobData{
+    margin-bottom: 1.5em;
+    background: #E0E0E0;
+    padding: 1em;
+    border-radius: 3px;
+    transition: .5s;
+}
+
+.jobData:hover{
+    box-shadow: 2px 6px 20px -4px rgba(0, 0, 0, 0.75);
+}
+
+.listContainer{
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    margin: .7em 1em;
+    color: #5f5a5a;
+}
+
+.listContainer p{
+    padding-bottom: .6em;
+}
+
+.columnOne{
+    display: flex;
+    justify-content: space-between;
+}
+
+.columnOne .companyName{
+    margin-right: 1em;
+
+}
+
+.hide{
+    display: none;
+} 
+
+@media (max-width: 767px){
+
+    .headerContainer h1 {
+        padding: 1em 0.5em;
+    }
+
+    .githubForm {
+        flex-direction: column;
+    }
+
+    .column {
+        width: 100%;
+    }
+
+    .githubForm__button {
+        align-self: center;
+        width: 50%;
+        margin-top: 1em;
+    }
+
+    .columnOne {
+        flex-direction: column;
+        margin-right: 1.5em;
+    }
+    
 }
