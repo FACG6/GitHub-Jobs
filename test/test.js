@@ -1,10 +1,10 @@
 const supertest = require('supertest');
-const test = require('tape')
-const router = require('../src/router')
+const test = require('tape');
+const router = require('../src/router');
 
 test('Testing The tape', (t) => {
 	const num = 5;
-	t.equal(num, 5, 'Pass')
+	t.equal(num, 5, 'Pass');
 	t.end();
 })
 
@@ -13,14 +13,22 @@ test('Hnadle Home Page', (t)=>{
 	.get('/')
 	.expect(200)
 	.expect('content-type', /html/)
-	.end((err, res)=>{
-		if(err){
-			t.error(err);
-			return;
-		}
-		t.equal(res.statusCode, 200, 'Should be 200 | Okay');
+	.end((err)=>{
+		t.error(err);
 		t.end();
 	})
+})
+
+test('Hnadle Home Page Content', (t) => {
+	supertest(router)
+		.get('/')
+		.expect(200)
+		.expect('content-type', /html/)
+		.end((err, res) => {
+			t.error(err);
+			t.equal(res.text.includes('<title>GitHub Jobs</title>'), true, 'pass');
+			t.end();
+		})
 })
 
 test('Testing handleStatics: style.css', (t)=>{
@@ -28,12 +36,20 @@ test('Testing handleStatics: style.css', (t)=>{
 		.get('/public/css/style.css')
 		.expect(200)
 		.expect('content-type', 'text/css')
+		.end((err) => {
+			t.error(err);
+			t.end();
+		})
+})
+
+test('Testing style.css Content', (t) => {
+	supertest(router)
+		.get('/public/css/style.css')
+		.expect(200)
+		.expect('content-type', 'text/css')
 		.end((err, res) => {
-			if (err) {
-				t.error(err);
-				return;
-			}
-			t.equal(res.statusCode, 200, 'Should be 200 | Okay');
+			t.error(err);
+			t.equal(res.text.includes('.headerContainer') && res.text.includes(' padding: 1em 2em;'), true, 'pass')
 			t.end();
 		})
 })
@@ -43,12 +59,8 @@ test('Testing handleStatics: dom.js', (t) => {
 		.get('/public/js/dom.js')
 		.expect(200)
 		.expect('content-type', 'text/javascript')
-		.end((err, res) => {
-			if (err) {
-				t.error(err);
-				return;
-			}
-			t.equal(res.statusCode, 200, 'Should be 200 | Okay');
+		.end((err) => {
+			t.error(err);
 			t.end();
 		})
 })
@@ -58,14 +70,10 @@ test('Handle Not Found Page', (t) => {
 	.get('/israa')
 	.expect(404)
 	.expect('content-type', /html/)
-	.end((err, res) => {
-		if (err) {
-			t.error(err);
-			return;
-		}
-		t.equal(res.statusCode, 404, 'Should be 404 | Not Found');
+	.end((err) => {
+		t.error(err);
 		t.end();
-	} )
+	})
 })
 
 test('Handle Search', (t) => {
@@ -73,14 +81,10 @@ test('Handle Search', (t) => {
 	.get('/get-jobs')
 	.expect(200)
 	.expect('content-type', /json/)
-	.end((err, res) => {
-		if (err) {
-			t.error(err);
-			return;
-		}
-		t.equal(res.statusCode, 200, 'Should be 200');
-		t.end()
-	} )
+	.end((err) => {
+		t.error(err);
+		t.end();
+	})
 })
 
 test('Handle Internal Server Error', (t) => {
@@ -88,14 +92,12 @@ test('Handle Internal Server Error', (t) => {
 		.get('/public/style.css')
 		.expect(500)
 		.expect('content-type', /html/)
-		.end((err, res) => {
-			if (err) {
-				t.error(err);
-				return;
-			}
-			t.equal(res.statusCode, 500, 'Should be 500 | internal Server Error');
-			t.end()
+		.end((err) => {
+			t.error(err);
+			t.end();
 		})
 })
+
+
 
 

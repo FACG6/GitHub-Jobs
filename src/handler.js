@@ -16,7 +16,6 @@ const handleHome = (req, res) => {
         }
     })
 }
-
 const handleStatics = (req, res) => {
     const endpoint = req.url;
     const conteType = {
@@ -50,10 +49,13 @@ const handleSearch = (req, res) => {
     req.on('end', () => {
         makeRequest(data, (err, json) => {
             if (err) {
-                res.writeHead(500, {
-                    'content-type': 'text/plain'
-                });
-                res.end(err);
+                if (err === 404) {
+                    handleNotFoundPage(req, res);
+                    return;
+                } else {
+                    handleServerError(req, res);
+                    return;
+                }
             } else {
                 res.writeHead(200, {
                     'content-type': 'application/json'
